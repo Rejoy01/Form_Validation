@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="./index.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Form</title>
+    <style>
+      .invalid {
+        border: 2px solid red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="heading">
+        <h2>Registration Form</h2>
+        <p id="sessionTimer">
+          Session will expire in <span id="timer">10:00</span> minutes and
+          seconds
+        </p>
+      </div>
+      <div class="form">
+        <form id="registrationForm" class="infoForm authForm">
+          <div>
+            
+            <input
+            placeholder="Name"
+              type="text"
+              class="infoInput"
+              id="Name"
+              pattern="[A-Za-z]{3,}"
+              required
+            />
+            <span id="NameError"></span>
+
+            <input placeholder="Email" type="email" class="infoInput" id="Email" />
+            <span id="EmailError"></span>
+          </div>
+
+          <div>
+            <input
+              placeholder="Phone"
+              class="infoInput"
+              type="tel"
+              id="Phone"
+              
+            />
+            <span id="PhoneError"></span>
+
+            <input class="infoInput" placeholder="Date of Birth " type="date" id="Dob" />
+            <span id="DobError"></span>
+          </div>
+
+          <div>
+            
+            <input
+            placeholder="Password "
+              class="infoInput"
+              id="password"
+              type="password"
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{8,}"
+              required
+            />
+            <br />
+            <span id="PasswordError"></span>
+
+             <input
+              placeholder="Confirm Password"
+              class="infoInput"
+              type="password"
+              id="ConfirmPass"
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{8,}"
+              required
+            />
+            <span id="ConfirmError"></span>
+          </div>
+
+          <div>
+            <input type="submit" value="Submit" id="SubmitButton" disabled />
+          </div>
+        </form>
+    </div>
+    
+    </div>
+    <p id="successMessage" style="display: none; justify-content: center;" >Form submitted successfully!</p>
+
+    <script src="./index.js"></script>
+  </body>
+</html>
