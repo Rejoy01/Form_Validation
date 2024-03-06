@@ -33,6 +33,8 @@ document.getElementById("SubmitButton").addEventListener("click", function(event
     event.preventDefault(); 
     isValid && validateSubmit();
 });
+
+var dis = true
     
     
  
@@ -98,14 +100,20 @@ function validateName() {
         ErrorMessage.textContent = "Please enter a valid name"
         NameInput.classList.add("invalid")
         NameInput.classList.remove("valid");
+        InputDisable(true)
+        NameInput.disabled=false
+        
+
+
     }else{
         ErrorMessage.textContent = ""
         NameInput.classList.add("valid");
         NameInput.classList.remove("invalid")
+        
+        InputDisable(false)
     }
     (function(){
         ErrorMessage.textContent = ""
-        
 
     })
     
@@ -123,10 +131,15 @@ function validateEmail() {
         ErrorMessage.textContent = "Please enter a valid name"
         emailInput.classList.add("invalid")
         emailInput.classList.remove("valid");
+        InputDisable(true)
+        emailInput.disabled = false
+
     }else{
         ErrorMessage.textContent = ""
         emailInput.classList.add("valid");
         emailInput.classList.remove("invalid")
+        InputDisable(false)
+
     }
     (function(){
         ErrorMessage.textContent = ""
@@ -145,10 +158,15 @@ function validatePhone() {
         ErrorMessage.textContent = "Please enter a valid phone number";
         phoneInput.classList.add("invalid");
         phoneInput.classList.remove("valid");
+        InputDisable(true)
+        phoneInput.disabled=false
     } else {
         ErrorMessage.textContent = "";
         phoneInput.classList.remove("invalid");
         phoneInput.classList.add("valid");
+        InputDisable(false)
+        
+
     }
     (function(){
         ErrorMessage.textContent = ""
@@ -165,10 +183,13 @@ function ValidatePassword(){
         ErrorMessage.textContent = "Password Must Contain at least 8 Character one number ,one Special Character,one upperCase letter and Lower Case Letter , "
         passInput.classList.add('invalid') 
         passInput.classList.remove("valid")
+        InputDisable(true)
+        passInput.disabled=false
     }else{
         ErrorMessage.textContent = ""
         passInput.classList.add('valid') 
         passInput.classList.remove("invalid")
+        InputDisable(false)
     }
     (function(){
         ErrorMessage.textContent = ""
@@ -184,10 +205,14 @@ function ValidateConfirmPassword(){
         ErrorMessage.textContent = "Password does not match"
         ConfirmPassInput.classList.add("invalid")
         ConfirmPassInput.classList.remove("valid")
+        InputDisable(true)
+        ConfirmPass.disabled = false
+
     }else{
         ErrorMessage.textContent = ""
         ConfirmPassInput.classList.add('valid') 
-        ConfirmPassInput.classList.remove('invalid') 
+        ConfirmPassInput.classList.remove('invalid')
+        InputDisable(false) 
     }
     (()=>{
         ErrorMessage.textContent = ""
@@ -207,10 +232,10 @@ function ValidateForm(){
 
     if(email && name && Password && phone && ConfirmPassword && Dob){
         document.getElementById("SubmitButton").disabled  = false
-        formValid = true
+        
     }else{
         document.getElementById("SubmitButton").disabled  = true
-        formValid = false
+        
     }
     
 }
@@ -239,8 +264,18 @@ function validateSubmit() {
     }
     
     if (isFormValid ) {
-        // Show success message
+        
         document.getElementById("successMessage").style.display = "flex";
     }
 }
 
+function InputDisable(value){
+
+    document.getElementById("Name").disabled =  value
+    document.getElementById("password").disabled = value
+    document.getElementById("ConfirmPass").disabled = value
+    document.getElementById("Phone").disabled = value
+    document.getElementById("Dob").disabled = value
+    document.getElementById("Email").disabled = value
+
+}
